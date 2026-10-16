@@ -1,0 +1,1013 @@
+{
+ "size": 600,
+ "available": [
+  1,
+  21,
+  51,
+  75,
+  91,
+  120
+ ],
+ "levels": {
+  "1": {
+   "file": "unit001.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: cluttered toy bins, plush toys, rocking horse, junk"
+  },
+  "2": {
+   "file": "unit002.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: moldy cardboard boxes collapsing into a heap"
+  },
+  "3": {
+   "file": "unit003.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: busted CRT TVs stacked with tangled cables"
+  },
+  "4": {
+   "file": "unit004.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: soggy mattresses and pizza boxes"
+  },
+  "5": {
+   "file": "unit005.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: piles of loose clothes and shoe heaps"
+  },
+  "6": {
+   "file": "unit006.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: rusty paint cans and dried rollers"
+  },
+  "7": {
+   "file": "unit007.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: broken plastic toys in dirty laundry baskets"
+  },
+  "8": {
+   "file": "unit008.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: old newspapers bundled to the ceiling"
+  },
+  "9": {
+   "file": "unit009.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: cracked bins of mystery cables and chargers"
+  },
+  "10": {
+   "file": "unit010.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: dead houseplants, cat litter bags, junk"
+  },
+  "11": {
+   "file": "unit011.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: shredded recliner and broken vacuum cleaners"
+  },
+  "12": {
+   "file": "unit012.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: busted bikes with flat tires and bent rims"
+  },
+  "13": {
+   "file": "unit013.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: greasy auto parts and oil jugs on the floor"
+  },
+  "14": {
+   "file": "unit014.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: VHS tapes spilling from ripped boxes"
+  },
+  "15": {
+   "file": "unit015.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: broken treadmill buried in clothes"
+  },
+  "16": {
+   "file": "unit016.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: water-stained particleboard dresser and junk"
+  },
+  "17": {
+   "file": "unit017.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: Christmas decor tangled in mouse-chewed boxes"
+  },
+  "18": {
+   "file": "unit018.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: mismatched dishes in garbage bags"
+  },
+  "19": {
+   "file": "unit019.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: hoarder tunnel of magazines and bins"
+  },
+  "20": {
+   "file": "unit020.jpg",
+   "tier": "Trash / hoarder junk",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: floor-to-ceiling torn trash bags and broken lawn chairs"
+  },
+  "21": {
+   "file": "unit021.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: plain sofa, mattress, washer, cardboard moving boxes"
+  },
+  "22": {
+   "file": "unit022.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: neat stack of labeled moving boxes and a lamp"
+  },
+  "23": {
+   "file": "unit023.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: bed frame, nightstands, clothes racks"
+  },
+  "24": {
+   "file": "unit024.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: kitchen table with chairs stacked on top"
+  },
+  "25": {
+   "file": "unit025.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: plastic storage totes on metal shelving"
+  },
+  "26": {
+   "file": "unit026.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: bunk bed parts and kids' bikes"
+  },
+  "27": {
+   "file": "unit027.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: microwave, toaster oven, boxed kitchenware"
+  },
+  "28": {
+   "file": "unit028.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: office desk, rolling chair, file cabinet"
+  },
+  "29": {
+   "file": "unit029.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: flat-screen TV, TV stand, game console boxes"
+  },
+  "30": {
+   "file": "unit030.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: futon, bean bags, dorm-room gear"
+  },
+  "31": {
+   "file": "unit031.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: baby crib, stroller, car seats, toys"
+  },
+  "32": {
+   "file": "unit032.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: patio furniture set and grill"
+  },
+  "33": {
+   "file": "unit033.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: linen boxes, quilts, vacuum, ironing board"
+  },
+  "34": {
+   "file": "unit034.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: bookcases full of paperbacks"
+  },
+  "35": {
+   "file": "unit035.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: dresser, mirror, wardrobe boxes"
+  },
+  "36": {
+   "file": "unit036.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: holiday totes and an artificial tree, tidy"
+  },
+  "37": {
+   "file": "unit037.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: washer and dryer pair with laundry baskets"
+  },
+  "38": {
+   "file": "unit038.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: sectional couch wrapped in plastic"
+  },
+  "39": {
+   "file": "unit039.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: exercise bike, yoga mats, small weights"
+  },
+  "40": {
+   "file": "unit040.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: garage-sale tables of housewares"
+  },
+  "41": {
+   "file": "unit041.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: dining hutch with boxed china"
+  },
+  "42": {
+   "file": "unit042.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: mini-fridge, chest freezer, coolers"
+  },
+  "43": {
+   "file": "unit043.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: lamps, rugs rolled up, wall art"
+  },
+  "44": {
+   "file": "unit044.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: rolled carpet, curtains, home decor"
+  },
+  "45": {
+   "file": "unit045.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: computer tower, monitors, printer"
+  },
+  "46": {
+   "file": "unit046.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: sewing machine and fabric bins"
+  },
+  "47": {
+   "file": "unit047.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: kids' playhouse, wagons, sports balls"
+  },
+  "48": {
+   "file": "unit048.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: camping tent, sleeping bags, lanterns"
+  },
+  "49": {
+   "file": "unit049.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: tidy shelving with pots, pans, small appliances"
+  },
+  "50": {
+   "file": "unit050.jpg",
+   "tier": "Household basic",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: full one-bedroom apartment packed neatly"
+  },
+  "51": {
+   "file": "unit051.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: red rolling toolbox, dumbbell rack, road bike on wall"
+  },
+  "52": {
+   "file": "unit052.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: solid oak dining set and buffet"
+  },
+  "53": {
+   "file": "unit053.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: leather sofa and recliner in good shape"
+  },
+  "54": {
+   "file": "unit054.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: table saw, miter saw, shop vac"
+  },
+  "55": {
+   "file": "unit055.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: pegboard of hand tools and power drills"
+  },
+  "56": {
+   "file": "unit056.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: king bed set, upholstered headboard"
+  },
+  "57": {
+   "file": "unit057.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: generator, pressure washer, air compressor"
+  },
+  "58": {
+   "file": "unit058.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: drum kit and guitar amps"
+  },
+  "59": {
+   "file": "unit059.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: home gym: bench, squat rack, plates"
+  },
+  "60": {
+   "file": "unit060.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: quality mountain bikes and bike stand"
+  },
+  "61": {
+   "file": "unit061.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: welding rig and steel workbench"
+  },
+  "62": {
+   "file": "unit062.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: lawn tractor, string trimmers, leaf blowers"
+  },
+  "63": {
+   "file": "unit063.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: mid-century dresser and credenza"
+  },
+  "64": {
+   "file": "unit064.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: electric guitars on stands, keyboard"
+  },
+  "65": {
+   "file": "unit065.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: landscaping tools and wheelbarrows"
+  },
+  "66": {
+   "file": "unit066.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: high-end espresso machine, mixer, cookware"
+  },
+  "67": {
+   "file": "unit067.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: gun-safe style cabinet and hunting gear (no firearms visible)"
+  },
+  "68": {
+   "file": "unit068.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: fishing rods, tackle boxes, a small boat"
+  },
+  "69": {
+   "file": "unit069.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: contractor ladders, scaffolding, tile saw"
+  },
+  "70": {
+   "file": "unit070.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: office suite: executive desk, bookshelves"
+  },
+  "71": {
+   "file": "unit071.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: pool table disassembled, bar stools"
+  },
+  "72": {
+   "file": "unit072.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: kayaks, paddleboards, outdoor gear, dirt bike"
+  },
+  "73": {
+   "file": "unit073.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: DJ gear, speakers, mixing console"
+  },
+  "74": {
+   "file": "unit074.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: restaurant equipment: stainless prep tables"
+  },
+  "75": {
+   "file": "unit075.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: sewing studio with industrial machines"
+  },
+  "76": {
+   "file": "unit076.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: electrician supply bins and wire spools"
+  },
+  "77": {
+   "file": "unit077.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: plumbing tools, pipe threaders, fittings"
+  },
+  "78": {
+   "file": "unit078.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: auto mechanic setup: jack, engine hoist"
+  },
+  "79": {
+   "file": "unit079.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: woodworking shop: lathe, jointer, planer"
+  },
+  "80": {
+   "file": "unit080.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: patio teak furniture and fire pit"
+  },
+  "81": {
+   "file": "unit081.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: smart TVs boxed, soundbar, receivers"
+  },
+  "82": {
+   "file": "unit082.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: camping trailer gear, roof racks, coolers"
+  },
+  "83": {
+   "file": "unit083.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: snowboards, skis, boots, racks"
+  },
+  "84": {
+   "file": "unit084.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: golf clubs, golf cart parts, bags"
+  },
+  "85": {
+   "file": "unit085.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: cabinet-maker tools and lumber stacks"
+  },
+  "86": {
+   "file": "unit086.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: hot tub cover, pool supplies, pumps"
+  },
+  "87": {
+   "file": "unit087.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: nice wardrobe of designer-look clothes"
+  },
+  "88": {
+   "file": "unit088.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: quality bedroom suite, tufted bench"
+  },
+  "89": {
+   "file": "unit089.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: commercial floor buffer, cleaning gear"
+  },
+  "90": {
+   "file": "unit090.jpg",
+   "tier": "Decent furniture & tools",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: fully organized garage-style unit, all good gear"
+  },
+  "91": {
+   "file": "unit091.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: antique dresser, oil painting, brass lamp, tea set, trunk"
+  },
+  "92": {
+   "file": "unit092.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: grandfather clock and Victorian chairs"
+  },
+  "93": {
+   "file": "unit093.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: stacks of comic-book long boxes"
+  },
+  "94": {
+   "file": "unit094.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage vinyl records in crates"
+  },
+  "95": {
+   "file": "unit095.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: old steamer trunks and travel stickers"
+  },
+  "96": {
+   "file": "unit096.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: sports-card boxes, jerseys, signed balls"
+  },
+  "97": {
+   "file": "unit097.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: retro arcade cabinet and pinball machine"
+  },
+  "98": {
+   "file": "unit098.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage toys in original boxes"
+  },
+  "99": {
+   "file": "unit099.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: antique china cabinet with crystal"
+  },
+  "100": {
+   "file": "unit100.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: cast-iron cookware and old signs"
+  },
+  "101": {
+   "file": "unit101.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: oak roll-top desk and typewriters"
+  },
+  "102": {
+   "file": "unit102.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage cameras and film gear on shelves"
+  },
+  "103": {
+   "file": "unit103.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: porcelain dolls and toy trains"
+  },
+  "104": {
+   "file": "unit104.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: antique tools and wooden planes"
+  },
+  "105": {
+   "file": "unit105.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: mid-century modern lounge chairs"
+  },
+  "106": {
+   "file": "unit106.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: old gas-station signs and soda coolers"
+  },
+  "107": {
+   "file": "unit107.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage guitars in hard cases"
+  },
+  "108": {
+   "file": "unit108.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: stamp albums and coin folders on a desk"
+  },
+  "109": {
+   "file": "unit109.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: old movie posters in frames"
+  },
+  "110": {
+   "file": "unit110.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: Persian rugs rolled and stacked"
+  },
+  "111": {
+   "file": "unit111.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: antique mirrors with gilded frames"
+  },
+  "112": {
+   "file": "unit112.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage jukebox and diner booth"
+  },
+  "113": {
+   "file": "unit113.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: barbershop chair and old memorabilia"
+  },
+  "114": {
+   "file": "unit114.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vinyl, cassettes, vintage stereo stack"
+  },
+  "115": {
+   "file": "unit115.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: retro video game consoles and cartridges"
+  },
+  "116": {
+   "file": "unit116.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: Depression glass and pottery shelves"
+  },
+  "117": {
+   "file": "unit117.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage bicycles and old motor scooter"
+  },
+  "118": {
+   "file": "unit118.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: military-surplus trunks and uniforms"
+  },
+  "119": {
+   "file": "unit119.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: antique sewing machines and quilts"
+  },
+  "120": {
+   "file": "unit120.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: neon beer signs and bar memorabilia"
+  },
+  "121": {
+   "file": "unit121.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: first-edition books in glass bookcase"
+  },
+  "122": {
+   "file": "unit122.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: old brass instruments and sheet music"
+  },
+  "123": {
+   "file": "unit123.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: art deco lamps and furniture"
+  },
+  "124": {
+   "file": "unit124.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage fishing lures and decoys"
+  },
+  "125": {
+   "file": "unit125.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: western saddles and cowboy memorabilia"
+  },
+  "126": {
+   "file": "unit126.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: Hollywood memorabilia and props"
+  },
+  "127": {
+   "file": "unit127.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: antique maps and globes"
+  },
+  "128": {
+   "file": "unit128.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: rare sneaker boxes stacked high"
+  },
+  "129": {
+   "file": "unit129.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: old radios and tube TVs restored"
+  },
+  "130": {
+   "file": "unit130.jpg",
+   "tier": "Collectibles & antiques",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: curio cabinet of collectibles under light"
+  },
+  "131": {
+   "file": "unit131.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage car parts: chrome bumpers, engine block, hubcaps"
+  },
+  "132": {
+   "file": "unit132.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: classic muscle car under a dust cover"
+  },
+  "133": {
+   "file": "unit133.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: racks of designer handbags"
+  },
+  "134": {
+   "file": "unit134.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: boxes of silver coins and coin tubes on a table"
+  },
+  "135": {
+   "file": "unit135.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage motorcycle restored"
+  },
+  "136": {
+   "file": "unit136.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: designer furniture showroom pieces"
+  },
+  "137": {
+   "file": "unit137.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: rare guitar collection, wall-mounted"
+  },
+  "138": {
+   "file": "unit138.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: luxury watch boxes in a display case"
+  },
+  "139": {
+   "file": "unit139.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: classic car engine on stand and rims"
+  },
+  "140": {
+   "file": "unit140.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: high-end camera and lens collection"
+  },
+  "141": {
+   "file": "unit141.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: designer suits and gowns in garment racks"
+  },
+  "142": {
+   "file": "unit142.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: sterling silver flatware and tea services"
+  },
+  "143": {
+   "file": "unit143.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: fine art canvases in crates"
+  },
+  "144": {
+   "file": "unit144.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: antique Tiffany-style lamps"
+  },
+  "145": {
+   "file": "unit145.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: collector sports memorabilia wall, framed"
+  },
+  "146": {
+   "file": "unit146.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage Rolex-style watch cases (unbranded)"
+  },
+  "147": {
+   "file": "unit147.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: gold-leaf framed paintings"
+  },
+  "148": {
+   "file": "unit148.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: rare whisky bottles in crates"
+  },
+  "149": {
+   "file": "unit149.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: pro audio studio gear"
+  },
+  "150": {
+   "file": "unit150.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: classic convertible half-uncovered"
+  },
+  "151": {
+   "file": "unit151.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage race car parts and helmets"
+  },
+  "152": {
+   "file": "unit152.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: bronze sculptures on pallets"
+  },
+  "153": {
+   "file": "unit153.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: jewelry armoires and velvet trays"
+  },
+  "154": {
+   "file": "unit154.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: designer sneakers in display cubes"
+  },
+  "155": {
+   "file": "unit155.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: antique firearms cases (closed) and swords displayed"
+  },
+  "156": {
+   "file": "unit156.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: marble statues and columns"
+  },
+  "157": {
+   "file": "unit157.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: crates of fine china and crystal"
+  },
+  "158": {
+   "file": "unit158.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: signed championship memorabilia"
+  },
+  "159": {
+   "file": "unit159.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: luxury e-bikes and carbon road bikes"
+  },
+  "160": {
+   "file": "unit160.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: hand-knotted silk rugs"
+  },
+  "161": {
+   "file": "unit161.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage slot machines"
+  },
+  "162": {
+   "file": "unit162.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: rare coin safe open with gold coins"
+  },
+  "163": {
+   "file": "unit163.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: classic hot rod with flames"
+  },
+  "164": {
+   "file": "unit164.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: antique pocket watches under glass"
+  },
+  "165": {
+   "file": "unit165.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: designer luggage set"
+  },
+  "166": {
+   "file": "unit166.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage Hollywood car"
+  },
+  "167": {
+   "file": "unit167.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: museum-quality antique furniture"
+  },
+  "168": {
+   "file": "unit168.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: grand piano under dust sheet"
+  },
+  "169": {
+   "file": "unit169.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: wine collection racks"
+  },
+  "170": {
+   "file": "unit170.jpg",
+   "tier": "High-value",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: high-roller unit: car, art, cases of coins"
+  },
+  "171": {
+   "file": "unit171.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: gold bars glinting in an open safe"
+  },
+  "172": {
+   "file": "unit172.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: supercar under a silk cover"
+  },
+  "173": {
+   "file": "unit173.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: jewel-encrusted crowns on velvet"
+  },
+  "174": {
+   "file": "unit174.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: Faberge-style eggs in display cases"
+  },
+  "175": {
+   "file": "unit175.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: ancient Egyptian artifacts in crates"
+  },
+  "176": {
+   "file": "unit176.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: old masters paintings on easels"
+  },
+  "177": {
+   "file": "unit177.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vintage Ferrari-style race car"
+  },
+  "178": {
+   "file": "unit178.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: pirate chest overflowing with doubloons"
+  },
+  "179": {
+   "file": "unit179.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: diamond necklaces in glass cases"
+  },
+  "180": {
+   "file": "unit180.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: rare gem collection under spotlights"
+  },
+  "181": {
+   "file": "unit181.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: golden statues and gilded furniture"
+  },
+  "182": {
+   "file": "unit182.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: royal throne and tapestries"
+  },
+  "183": {
+   "file": "unit183.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: priceless violin collection"
+  },
+  "184": {
+   "file": "unit184.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: meteorites and fossils on stands"
+  },
+  "185": {
+   "file": "unit185.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: Samurai armor and katana displays"
+  },
+  "186": {
+   "file": "unit186.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: rare manuscripts and illuminated books"
+  },
+  "187": {
+   "file": "unit187.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: gold records and rock-star guitars"
+  },
+  "188": {
+   "file": "unit188.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: jewel-studded swords and shields"
+  },
+  "189": {
+   "file": "unit189.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: platinum and gold coin vault"
+  },
+  "190": {
+   "file": "unit190.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: Ming-style vases on pedestals"
+  },
+  "191": {
+   "file": "unit191.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: luxury yacht tender boat and gear"
+  },
+  "192": {
+   "file": "unit192.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: classic Rolls-style limousine"
+  },
+  "193": {
+   "file": "unit193.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: crown jewels replica-style display"
+  },
+  "194": {
+   "file": "unit194.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: ancient Greek amphorae and statues"
+  },
+  "195": {
+   "file": "unit195.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: emerald and ruby treasure trays"
+  },
+  "196": {
+   "file": "unit196.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: golden carriage"
+  },
+  "197": {
+   "file": "unit197.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: gold-plated motorcycle"
+  },
+  "198": {
+   "file": "unit198.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: dragon-hoard of mixed gold treasure"
+  },
+  "199": {
+   "file": "unit199.jpg",
+   "tier": "Rare luxury",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: vault room of gold, gems, art and cars"
+  },
+  "200": {
+   "file": "unit200.jpg",
+   "tier": "Legendary",
+   "prompt": "Photoreal 600x600 open roll-up storage unit, door raised, viewed from the doorway: LEGENDARY treasure unit: golden light pours out, mountains of gold coins, jewels, crowns, a gold-plated classic car, priceless art, treasure chests, sparkling, epic"
+  }
+ }
+}
