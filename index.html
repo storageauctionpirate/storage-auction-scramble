@@ -215,11 +215,11 @@ function newLevel(){if(RACE){RACE.att[lvl]=(RACE.att[lvl]||0)+1;Math.random=mulb
  lvlSeed=((Math.random()*4294967296)>>>0)||1;lvlStartScore=score;saveCamp();}
 function reach(){if(!RACE&&lvl>bestLvl){bestLvl=lvl;localStorage.setItem("uu_bestlvl",bestLvl);}}
 function addScore(p){score+=p;if(!RACE&&score>best){best=score;localStorage.setItem("uu_best",best);}hud();}
-function hud(){$("hS").textContent="SCORE "+score;var c=PZ.cfg(lvl);$("hL").textContent=(RACE?"R"+lvl+"/"+RACE.goal:"L"+lvl)+" · "+c.c+"x"+c.r;$("hB").textContent=RACE?"RACE":"BEST "+best;}
+function hud(){$("hS").textContent="SCORE "+score;var c=PZ.cfg(lvl);$("hL").textContent=(RACE?"R"+lvl+(RACE.mode==="pts"?"/"+RACE.goal:""):"L"+lvl)+" · "+c.c+"x"+c.r;$("hB").textContent=RACE?"RACE":"BEST "+best;}
 $("mute").onclick=function(){window.PZ_MUTED=!window.PZ_MUTED;this.textContent=window.PZ_MUTED?"🔇":"🔊";};
 UNIT_LADDER.init(window.LADDER_CFG||{available:[]});
-function unitImg(){return RACE?UNIT_LADDER.src(RACE.units[lvl-1]):UNIT_LADDER.src(lvl);}
-function unitNo(){return RACE?RACE.units[lvl-1]:lvl;}
+function unitImg(){return RACE?UNIT_LADDER.src(raceUnit(lvl)):UNIT_LADDER.src(lvl);}
+function unitNo(){return RACE?raceUnit(lvl):lvl;}
 function title(){endRace();var cp=loadCamp();score=0;lvl=1;hud();scr.innerHTML='<div class="lockd">🔒</div><h1><small>STORAGE AUCTION</small>SCRAMBLE</h1><div class="sub">Ahoy Pirate! Slide the crates. Crack the unit. Beat the clock.</div>'+
 '<div class="box">🧩 Tap a crate next to the gap to slide it.<br>📦 Crates show their picture once they land in the right spot.<br>👁 Hold <b>PEEK</b> to see the target (limited!).<br>⏱ Time runs out = <b class="red">BUST</b>.<br>🏆 SOLO: 200-unit campaign, junk → legendary. RACE: 2-4 friends, same board.</div>'+
 '<div class="thumbs">'+UNIT_IMGS.map(function(s){return '<img src="'+s+'">';}).join("")+'</div>'+
@@ -235,11 +235,12 @@ function play(){reach();hud();var host=document.createElement("div");host.style.
  var r=scr.getBoundingClientRect();
  var xt=perkTime,xr=perkPiece;perkTime=0;perkPiece=0;
  PZ.start({extraTime:xt,extraReveal:xr,seed:(PZ.CONFIG.sameBoardOnRetry||RACE)?lvlSeed:0,host:host,img:unitImg(),level:lvl,label:"UNIT "+unitNo(),maxW:r.width-34,maxH:r.height-130,onEnd:function(res){
+  if(res.ok&&RACE){addScore(lvl*100+res.left*10);if(res.bonus){window.__pzDbgUsed=true;randyPick();}raceCleared();return;}
   if(res.ok){addScore(lvl*100+res.left*10);
    var last=RACE&&lvl>=RACE.goal,nx=PZ.cfg(lvl+1);scr.innerHTML='<div class="lockd">🔓</div><div class="big">UNLOCKED!</div><div class="box">Level bonus: +'+lvl*100+'<br>Time bonus: +'+res.left*10+' ('+res.left+'s left)<br>Moves: '+res.moves+'</div>'+(last?'':'<div class="sub">Next: '+nx.c+'×'+nx.r+' grid · '+nx.t+'s · '+nx.p+' peek'+(nx.p===1?"":"s")+'</div>')+(xt||xr?'<div class="sub">Randy\'s prize used: '+(xt?'+'+xt+'s':'+'+xr+' free pieces')+'</div>':'')+'<button class="btn" id="nx">'+(last?'FINISH 🏁':'NEXT UNIT ▶')+'</button>';
    $("nx").onclick=nextUnit;if(RACE)raceProg(true);
    if(res.bonus){window.__pzDbgUsed=true;randyPick();}}
-  else over();},onEvent:function(ev){eventSplash(ev);}});if(RACE)raceProg(true);}
+  else if(RACE)raceBust();else over();},onEvent:function(ev){eventSplash(ev);}});if(RACE)raceProg(true);}
 function randyPick(){var C=PZ.CONFIG,ov=document.createElement("div");ov.className="evov evbonus";
  ov.innerHTML='<div class="evburst"></div><img class="evimg rimg" src="'+EVENT_IMGS.randy+'"><div class="evtxt rtxt">RANDY\'S<br>PICK!</div><div class="evsub">Randy the Appraiser found 3 sealed boxes. Tap one!</div><div class="rboxes">'+[0,1,2].map(function(i){return '<button class="rbox" data-i="'+i+'">📦</button>';}).join("")+'</div>';
  document.body.appendChild(ov);PZ.S.win();
@@ -256,7 +257,7 @@ function eventSplash(ev){var sold=ev.type==="sold",ov=document.createElement("di
  ov.innerHTML='<div class="evburst"></div><img class="evimg" src="'+(sold?EVENT_IMGS.auctioneer:EVENT_IMGS.debbie)+'"><div class="evtxt">'+(sold?"SOLD!":"TENANT<br>PAID!")+'</div><div class="evsub">'+(sold?"The Auctioneer slams the gavel — unit "+unitNo()+" is YOURS!":"Debbie Deals: the tenant paid up. Unit "+unitNo()+" is off the block!")+'</div>';
  document.body.appendChild(ov);
  if(sold){PZ.S.win();if(window.PZ_MUTED!==true)setTimeout(PZ.S.win,450);}else PZ.S.bust();
- setTimeout(function(){ov.remove();
+ setTimeout(function(){ov.remove();if(RACE){if(!RACE.playing)return;if(sold){addScore(lvl*100);raceCleared();}else{score=lvlStartScore;hud();newLevel();play();}return;}
   if(sold){var pts=lvl*100;addScore(pts);var last=RACE&&lvl>=RACE.goal;
    scr.innerHTML='<div class="lockd">🔨</div><div class="big">SOLD TO YOU!</div><div class="box">The Auctioneer handed you unit '+unitNo()+'.<br>Level bonus: +'+pts+'</div><button class="btn" id="nx">'+(last?'FINISH 🏁':'NEXT UNIT ▶')+'</button>';
    $("nx").onclick=nextUnit;}
@@ -266,84 +267,122 @@ function eventSplash(ev){var sold=ev.type==="sold",ov=document.createElement("di
 function over(){var nb=!RACE&&score>0&&score>=best;scr.innerHTML='<div class="lockd">💥</div><div class="big red">BUSTED!</div><div class="sub">Time ran out on unit '+unitNo()+'.</div><div class="box" style="text-align:center;font-size:22px">Score <b>'+score+'</b>'+(RACE?'<br>Retry — the race is still on!':'<br>Best <b>'+best+'</b><br>Best level reached <b>'+bestLvl+'</b>'+(nb?'<br>🏆 NEW BEST!':''))+'</div><button class="btn" id="re">RETRY '+(RACE?'ROUND ':'LEVEL ')+lvl+' ↻</button><button class="btn" id="so" style="background:#666;color:#eee;box-shadow:0 6px 0 #333;font-size:16px;padding:10px">'+(RACE?'QUIT RACE':'START OVER')+'</button>';
  $("re").onclick=function(){score=lvlStartScore;if(!PZ.CONFIG.sameBoardOnRetry&&!RACE)newLevel();else if(RACE)newLevel();play();};
  $("so").onclick=function(){if(!RACE){localStorage.removeItem("sas_camp");}title();};}
-// ===== RACE mode: PeerJS (public PeerJS cloud broker), host is authority & clock =====
-var NET={peer:null,conns:{},host:false,code:"",me:"",players:{},offset:0,winner:null,lobbyCb:null};
-var RACE_GOAL=5,RACE_PREFIX="sas-scramble-race-";
+// ===== RACE: PeerJS (public PeerJS cloud broker), host is authority & clock =====
+var RACE_CONFIG={
+ points:[3,2,1,0],   // POINTS MODE: points by finish order each round (bust = 0)
+ rounds:5,           // POINTS MODE: rounds before the highest total wins (tie -> lower total time)
+ countdownMs:4000,   // synchronized countdown before every round
+ betweenMs:7000,     // scoreboard pause before the host auto-starts the next round
+ maxPlayers:4
+};
+var NET={peer:null,conns:{},host:false,code:"",me:"",players:{},offset:0,winner:null,smp:[]};
+var RACE_PREFIX="sas-scramble-race-",RACE_TIER=0,RACE_MODE="pts";
 function myName(){return (localStorage.getItem("sas_name")||"Pirate").slice(0,12);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
 function loadPeer(cb){if(window.Peer)return cb(null);var s=document.createElement("script"),t=setTimeout(function(){cb("timeout");cb=function(){};},12000);
  s.src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js";s.onload=function(){clearTimeout(t);cb(window.Peer?null:"no Peer");cb=function(){};};s.onerror=function(){clearTimeout(t);cb("load failed");cb=function(){};};document.head.appendChild(s);}
 function netFail(msg){netClose();scr.innerHTML='<div class="lockd">📡</div><div class="big red" style="font-size:30px">RACE UNAVAILABLE</div><div class="box">'+msg+'<br>SOLO still works fine.</div><button class="btn" id="so">SOLO / TITLE</button>';$("so").onclick=title;}
 function netClose(){try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns={};NET.players={};NET.winner=null;}
-function endRace(){if(RACE){RACE=null;Math.random=NATIVE_RANDOM;}clearInterval(window.__raceIv);$("opp").classList.remove("on");$("opp").innerHTML="";netClose();}
-function nameBox(){return '<input class="inp" id="nm" maxlength="12" value="'+myName().replace(/"/g,"")+'" placeholder="Your name">';}
+function endRace(){if(RACE){RACE=null;Math.random=NATIVE_RANDOM;}clearInterval(window.__raceIv);clearTimeout(window.__raceNext);$("opp").classList.remove("on");$("opp").innerHTML="";netClose();}
+function nameBox(){return '<input class="inp" id="nm" maxlength="12" value="'+esc(myName())+'" placeholder="Your name">';}
 function saveName(){var v=($("nm").value||"").trim()||"Pirate";localStorage.setItem("sas_name",v);return v.slice(0,12);}
-function raceMenu(){scr.innerHTML='<div class="lockd">🏁</div><div class="big" style="font-size:36px">RACE</div><div class="sub">2-4 pirates · same units · same events · first to crack '+RACE_GOAL+' units wins</div>'+nameBox()+
+function raceMenu(){scr.innerHTML='<div class="lockd">🏁</div><div class="big" style="font-size:36px">RACE</div><div class="sub">2-4 pirates · same unit · same events · synchronized start</div>'+nameBox()+
  '<button class="btn" id="hostb">HOST A ROOM</button><input class="inp" id="jc" maxlength="5" placeholder="ROOM CODE" style="text-transform:uppercase"><button class="btn s" id="joinb">JOIN</button><button class="btn s gr" id="bk">BACK</button>';
  $("hostb").onclick=function(){saveName();hostRoom();};$("joinb").onclick=function(){var c=($("jc").value||"").trim().toUpperCase();if(c.length<4){$("jc").focus();return;}saveName();joinRoom(c);};$("bk").onclick=title;}
 function joinMenu(c){scr.innerHTML='<div class="lockd">🏁</div><div class="big" style="font-size:32px">JOIN RACE</div><div class="code">'+c+'</div>'+nameBox()+'<button class="btn" id="joinb">JOIN ▶</button><button class="btn s gr" id="bk">SOLO INSTEAD</button>';
  $("joinb").onclick=function(){saveName();joinRoom(c);};$("bk").onclick=function(){history.replaceState(null,"",location.pathname);title();};}
 function bcast(m){for(var k in NET.conns)try{NET.conns[k].send(m);}catch(e){}}
 function plist(){var a=[];for(var k in NET.players)a.push(NET.players[k]);return a;}
+function pname(id){return NET.players[id]?NET.players[id].name:"(left)";}
 function shareLink(){return location.origin+location.pathname+"?room="+NET.code;}
-var RACE_TIER=0;
+var MODES={pts:["POINTS","Nobody's out. "+RACE_CONFIG.points.slice(0,3).join("/")+" pts by finish order each unit. Most points after "+RACE_CONFIG.rounds+" units wins."],elim:["ELIMINATION","Last to clear (or anyone who busts) is OUT and spectates. Last pirate standing wins."]};
 function lobby(){var ps=plist(),h=NET.host;
  scr.innerHTML='<div class="sub">ROOM CODE</div><div class="code" id="rc">'+NET.code+'</div>'+(h?'<div class="sub" style="font-size:12px;word-break:break-all;user-select:text;-webkit-user-select:text">'+shareLink()+'</div><button class="btn s" id="cp">📋 COPY / SHARE LINK</button>':'')+
- '<div class="box"><b>Players ('+ps.length+'/4)</b><br>'+ps.map(function(p){return (p.id===NET.me?'🟢 ':'⚓ ')+esc(p.name)+(p.host?' (host)':'');}).join("<br>")+'</div>'+
- (h?'<div class="sub">Unit tier</div><div class="tiers">'+["Any"].concat(UNIT_LADDER.TIERS.slice(1).map(function(t){return t[2];})).map(function(n,i){return '<button data-t="'+i+'" class="'+(i===RACE_TIER?"on":"")+'">'+n+'</button>';}).join("")+'</div><button class="btn" id="st" '+(ps.length<2?'disabled style="opacity:.5"':'')+'>START ▶</button>':'<div class="sub">Waiting for host to START…</div>')+
- '<button class="btn s gr" id="lv">LEAVE</button>';
+ '<div class="box"><b>Players ('+ps.length+'/'+RACE_CONFIG.maxPlayers+')</b><br>'+ps.map(function(p){return (p.id===NET.me?'🟢 ':'⚓ ')+esc(p.name)+(p.host?' (host)':'');}).join("<br>")+'</div>'+
+ (h?'<div class="sub">Mode</div><div class="tiers" id="modes">'+Object.keys(MODES).map(function(k){return '<button data-m="'+k+'" class="'+(k===RACE_MODE?"on":"")+'">'+MODES[k][0]+'</button>';}).join("")+'</div><div class="sub" style="font-size:13px">'+MODES[RACE_MODE][1]+'</div>'+
+  '<div class="sub">Unit tier</div><div class="tiers" id="tiers">'+["Any"].concat(UNIT_LADDER.TIERS.slice(1).map(function(t){return t[2];})).map(function(n,i){return '<button data-t="'+i+'" class="'+(i===RACE_TIER?"on":"")+'">'+n+'</button>';}).join("")+'</div><button class="btn" id="st" '+(ps.length<2?'disabled style="opacity:.5"':'')+'>START ▶</button>'
+  :'<div class="sub">Waiting for host to START…</div>')+'<button class="btn s gr" id="lv">LEAVE</button>';
  $("lv").onclick=title;
  if(h){$("cp").onclick=function(){var l=shareLink();if(navigator.share)navigator.share({title:"Storage Auction Scramble race",url:l}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(l).then(function(){$("cp").textContent="✅ COPIED";},function(){});};
-  scr.querySelectorAll(".tiers button").forEach(function(b){b.onclick=function(){RACE_TIER=+b.dataset.t;lobby();};});
+  scr.querySelectorAll("#tiers button").forEach(function(b){b.onclick=function(){RACE_TIER=+b.dataset.t;lobby();};});
+  scr.querySelectorAll("#modes button").forEach(function(b){b.onclick=function(){RACE_MODE=b.dataset.m;lobby();};});
   $("st").onclick=function(){if(plist().length<2)return;hostStart();};}}
-function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+// ---------- host ----------
 function hostRoom(){scr.innerHTML='<div class="big" style="font-size:28px">Opening room…</div>';loadPeer(function(err){if(err)return netFail("Couldn't load networking ("+err+").");
  var A="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",c="";for(var i=0;i<5;i++)c+=A[(NATIVE_RANDOM()*A.length)|0];
  NET.host=true;NET.code=c;var p=NET.peer=new Peer(RACE_PREFIX+c,{debug:0});
- p.on("open",function(id){NET.me=id;NET.players[id]={id:id,name:myName(),host:true,lvl:1,placed:0,total:0};lobby();});
+ p.on("open",function(id){NET.me=id;NET.players[id]={id:id,name:myName(),host:true,lvl:0,placed:0,total:0};lobby();});
  p.on("error",function(e){if(!RACE)netFail("Network error: "+(e.type||e));});
- p.on("connection",function(cn){cn.on("data",function(m){hostMsg(cn,m);});cn.on("close",function(){delete NET.conns[cn.peer];delete NET.players[cn.peer];hostSync();});});});}
-function hostSync(){var ps=plist();bcast({t:"players",ps:ps});if(!RACE)lobby();else drawOpp();}
+ p.on("connection",function(cn){cn.on("data",function(m){hostMsg(cn,m);});cn.on("close",function(){delete NET.conns[cn.peer];delete NET.players[cn.peer];if(RACE){delete RACE.alive[cn.peer];hostCheckRound();}hostSync();});});});}
+function hostSync(){bcast({t:"players",ps:plist()});if(!RACE)lobby();else drawOpp();}
 function hostMsg(cn,m){if(!m||!m.t)return;
  if(m.t==="ping"){cn.send({t:"pong",c:m.c,h:Date.now()});return;}
- if(m.t==="hello"){if(RACE||plist().length>=4){cn.send({t:"full",why:RACE?"Race already started":"Room is full (4 max)"});setTimeout(function(){cn.close();},500);return;}
-  NET.conns[cn.peer]=cn;NET.players[cn.peer]={id:cn.peer,name:String(m.name||"Pirate").slice(0,12),lvl:1,placed:0,total:0};hostSync();return;}
+ if(m.t==="hello"){if(RACE||plist().length>=RACE_CONFIG.maxPlayers){cn.send({t:"full",why:RACE?"Race already started":"Room is full"});setTimeout(function(){cn.close();},500);return;}
+  NET.conns[cn.peer]=cn;NET.players[cn.peer]={id:cn.peer,name:String(m.name||"Pirate").slice(0,12),lvl:0,placed:0,total:0};hostSync();return;}
  if(m.t==="prog"&&NET.players[cn.peer]){var p=NET.players[cn.peer];p.lvl=m.lvl;p.placed=m.placed;p.total=m.total;p.score=m.score;hostSync();return;}
- if(m.t==="done"){hostDone(cn.peer,m.ms,m.score);}}
-function hostDone(id,ms,sc){var p=NET.players[id];if(!p)return;p.done=ms;p.score=sc;p.lvl=RACE_GOAL;if(!NET.winner){NET.winner={id:id,name:p.name,ms:ms,score:sc};bcast({t:"win",w:NET.winner});showWin();}hostSync();}
-function hostStart(){var seed=((NATIVE_RANDOM()*4294967296)>>>0)||7,startAt=Date.now()+4000,m={t:"start",seed:seed,tier:RACE_TIER,goal:RACE_GOAL,startAt:startAt};bcast(m);beginRace(m,0);}
+ if(m.t==="res")hostRes(cn.peer,m);}
+function hostStart(){var m={t:"start",seed:((NATIVE_RANDOM()*4294967296)>>>0)||7,tier:RACE_TIER,mode:RACE_MODE,goal:RACE_CONFIG.rounds,points:RACE_CONFIG.points,ids:plist().map(function(p){return p.id;})};bcast(m);initRace(m);hostRound(1);}
+function hostRound(r){clearTimeout(window.__raceNext);RACE.res={};RACE.hostRound=r;var m={t:"round",r:r,startAt:Date.now()+RACE_CONFIG.countdownMs,alive:Object.keys(RACE.alive)};bcast(m);onRound(m,0);}
+function hostRes(id,m){if(!RACE||m.r!==RACE.hostRound||!RACE.alive[id]||RACE.res[id])return;RACE.res[id]={ok:m.ok,ms:m.ms};hostCheckRound();}
+function hostCheckRound(){if(!RACE||!RACE.res||RACE.boardSent===RACE.hostRound)return;var ids=Object.keys(RACE.alive);
+ if(ids.length&&ids.some(function(i){return !RACE.res[i];}))return;
+ RACE.boardSent=RACE.hostRound;var r=RACE.hostRound,fin=ids.filter(function(i){return RACE.res[i].ok;}).sort(function(a,b){return RACE.res[a].ms-RACE.res[b].ms;}),
+  bust=ids.filter(function(i){return !RACE.res[i].ok;}),order=[],elim=[],final=false,winner=null;
+ fin.forEach(function(i,k){var pts=RACE.mode==="pts"?(RACE.points[k]||0):0;RACE.totals[i]=(RACE.totals[i]||0)+pts;RACE.times[i]=(RACE.times[i]||0)+RACE.res[i].ms;order.push({id:i,ok:true,ms:RACE.res[i].ms,pts:pts});});
+ bust.forEach(function(i){RACE.totals[i]=RACE.totals[i]||0;RACE.times[i]=(RACE.times[i]||0)+999999;order.push({id:i,ok:false,pts:0});});
+ if(RACE.mode==="elim"){if(fin.length===0)elim=[];else if(bust.length)elim=bust;else if(fin.length>1)elim=[fin[fin.length-1]];
+  elim.forEach(function(i){delete RACE.alive[i];});var left=Object.keys(RACE.alive);if(left.length<=1){final=true;winner=left[0]||fin[0];}}
+ else{if(r>=RACE.goal||ids.length<2){final=true;var all=Object.keys(RACE.totals).filter(function(i){return NET.players[i];});all.sort(function(a,b){return (RACE.totals[b]-RACE.totals[a])||(RACE.times[a]-RACE.times[b]);});winner=all[0];}}
+ var b={t:"board",r:r,order:order,elim:elim,totals:RACE.totals,alive:Object.keys(RACE.alive),final:final,winner:winner?{id:winner,name:pname(winner)}:null,nextAt:final?0:Date.now()+RACE_CONFIG.betweenMs};
+ bcast(b);onBoard(b,0);if(!final)window.__raceNext=setTimeout(function(){if(RACE)hostRound(r+1);},RACE_CONFIG.betweenMs);}
+// ---------- client ----------
 function joinRoom(c){scr.innerHTML='<div class="big" style="font-size:28px">Joining '+c+'…</div>';loadPeer(function(err){if(err)return netFail("Couldn't load networking ("+err+").");
- NET.host=false;NET.code=c;var p=NET.peer=new Peer({debug:0}),ok=false,tm=setTimeout(function(){if(!ok)netFail("Couldn't reach room "+c+". Check the code and that the host is still in the lobby.");},15000);
+ NET.host=false;NET.code=c;NET.smp=[];var p=NET.peer=new Peer({debug:0}),ok=false,tm=setTimeout(function(){if(!ok)netFail("Couldn't reach room "+c+". Check the code and that the host is still in the lobby.");},15000);
  p.on("error",function(e){if(!ok)netFail("Network error: "+(e.type||e));});
  p.on("open",function(id){NET.me=id;var cn=p.connect(RACE_PREFIX+c,{reliable:true});NET.conns.host=cn;
-  cn.on("open",function(){ok=true;clearTimeout(tm);cn.send({t:"hello",name:myName()});var smp=[],n=0;
-   (function pg(){if(n++<6){cn.send({t:"ping",c:Date.now()});setTimeout(pg,250);}})();
-   NET.smp=smp;});
-  cn.on("data",function(m){clientMsg(m);});
+  cn.on("open",function(){ok=true;clearTimeout(tm);cn.send({t:"hello",name:myName()});var n=0;(function pg(){if(n++<6){cn.send({t:"ping",c:Date.now()});setTimeout(pg,250);}})();});
+  cn.on("data",clientMsg);
   cn.on("close",function(){if(RACE&&!NET.winner){$("opp").innerHTML+='<div>⚠ host left</div>';}else if(!RACE&&NET.peer)netFail("Host closed the room.");});});});}
 function clientMsg(m){if(!m||!m.t)return;
- if(m.t==="pong"){var now=Date.now(),rtt=now-m.c;NET.smp.push({rtt:rtt,off:m.h-(m.c+rtt/2)});NET.smp.sort(function(a,b){return a.rtt-b.rtt;});NET.offset=NET.smp[0].off;return;}
+ if(m.t==="pong"){var rtt=Date.now()-m.c;NET.smp.push({rtt:rtt,off:m.h-(m.c+rtt/2)});NET.smp.sort(function(a,b){return a.rtt-b.rtt;});NET.offset=NET.smp[0].off;return;}
  if(m.t==="players"){NET.players={};m.ps.forEach(function(p){NET.players[p.id]=p;});if(!RACE)lobby();else drawOpp();return;}
  if(m.t==="full"){netFail(m.why);return;}
- if(m.t==="start"){beginRace(m,NET.offset);return;}
- if(m.t==="win"){NET.winner=m.w;showWin();}}
-function beginRace(m,off){var rnd=mulberry(m.seed^0x5A17),tr=UNIT_LADDER.TIERS[m.tier],lo=tr?tr[0]:1,hi=tr?tr[1]:200,units=[];
- for(var i=0;i<m.goal;i++)units.push(lo+((rnd()*(hi-lo+1))|0));
- RACE={seed:m.seed,goal:m.goal,units:units,att:{},startLocal:m.startAt-off,tier:m.tier};window.__race=RACE;NET.winner=null;
- score=0;lvl=1;perkTime=0;perkPiece=0;hud();$("opp").classList.add("on");drawOpp();
- (function cd(){if(!RACE)return;var left=RACE.startLocal-Date.now();if(left<=0){newLevel();play();return;}scr.innerHTML='<div class="sub">Race starts in</div><div class="cd">'+Math.ceil(left/1000)+'</div><div class="sub">Same '+m.goal+' units for everyone. Go fast, Pirate!</div>';setTimeout(cd,Math.min(100,left));})();
+ if(m.t==="start"){initRace(m);return;}
+ if(m.t==="round"){onRound(m,NET.offset);return;}
+ if(m.t==="board"){onBoard(m,NET.offset);}}
+// ---------- shared game flow ----------
+function raceUnit(r){var tr=UNIT_LADDER.TIERS[RACE.tier],lo=tr?tr[0]:1,hi=tr?tr[1]:200;return lo+((mulberry(RACE.seed^Math.imul(r,0x9E3779B1))()*(hi-lo+1))|0);}
+function initRace(m){RACE={seed:m.seed,tier:m.tier,mode:m.mode,goal:m.goal,points:m.points,att:{},alive:{},totals:{},times:{},round:0,playing:false};m.ids.forEach(function(i){RACE.alive[i]=true;});
+ window.__race=RACE;NET.winner=null;score=0;lvl=1;perkTime=0;perkPiece=0;hud();$("opp").classList.add("on");drawOpp();
+ scr.innerHTML='<div class="lockd">🏁</div><div class="big">'+MODES[m.mode][0]+'</div><div class="sub">'+MODES[m.mode][1]+'</div>';
  clearInterval(window.__raceIv);window.__raceIv=setInterval(function(){raceProg(false);},500);}
+function amAlive(){return RACE&&RACE.alive[NET.me];}
+function onRound(m,off){if(!RACE)return;RACE.round=m.r;RACE.alive={};m.alive.forEach(function(i){RACE.alive[i]=true;});RACE.startLocal=m.startAt-off;RACE.sent=false;RACE.playing=false;
+ document.querySelectorAll(".evov").forEach(function(e){e.remove();});lvl=Math.min(m.r,12);hud();drawOpp();var r=m.r;
+ (function cd(){if(!RACE||RACE.round!==r)return;var left=RACE.startLocal-Date.now();
+  if(left<=0){if(amAlive()){RACE.playing=true;lvlStartScore=score;newLevel();play();}else spectate();return;}
+  scr.innerHTML='<div class="sub">'+(amAlive()?'Unit '+r+(RACE.mode==="pts"?' of '+RACE.goal:'')+' starts in':'You\'re out — spectating unit '+r)+'</div><div class="cd">'+Math.ceil(left/1000)+'</div><div class="sub">Everyone gets the same unit #'+raceUnit(r)+'.</div>';setTimeout(cd,Math.min(100,left));})();}
+function spectate(){scr.innerHTML='<div class="lockd">👀</div><div class="big" style="font-size:34px">SPECTATING</div><div class="sub">Round '+RACE.round+' · watch the bars up top</div><button class="btn s gr" id="lv">LEAVE</button>';$("lv").onclick=title;}
+function raceSend(ok){if(!RACE||RACE.sent)return;RACE.sent=true;RACE.playing=false;var m={t:"res",r:RACE.round,ok:ok,ms:Date.now()-RACE.startLocal,score:score};raceProg(true);
+ if(NET.host)hostRes(NET.me,m);else if(NET.conns.host)try{NET.conns.host.send(m);}catch(e){}}
+function raceCleared(){var ms=Date.now()-RACE.startLocal;scr.innerHTML='<div class="lockd">🔓</div><div class="big">CLEARED!</div><div class="sub">'+(ms/1000).toFixed(1)+'s · waiting for the others…</div>';raceSend(true);}
+function raceBust(){scr.innerHTML='<div class="lockd">💥</div><div class="big red">BUSTED!</div><div class="sub">'+(RACE.mode==="elim"?'Out of time — you\'re eliminated.':'Out of time — 0 points this unit.')+' Waiting for the others…</div>';raceSend(false);}
+function onBoard(b,off){if(!RACE)return;RACE.totals=b.totals;RACE.alive={};b.alive.forEach(function(i){RACE.alive[i]=true;});RACE.playing=false;try{window.__pz&&__pz.stop();}catch(e){}
+ if(b.final)document.querySelectorAll(".evov").forEach(function(e){e.remove();});window.__lastBoard=b;drawOpp();
+ var rows=b.order.map(function(o,k){return (o.ok?(k+1)+'. ':'💥 ')+esc(pname(o.id))+' — '+(o.ok?(o.ms/1000).toFixed(1)+'s':'busted')+(RACE.mode==="pts"?' · +'+o.pts:'')+(b.elim.indexOf(o.id)>=0?' · <b class="red">OUT</b>':'');}).join("<br>");
+ var stand=Object.keys(b.totals).filter(function(i){return NET.players[i];}).sort(function(a,c){return b.totals[c]-b.totals[a];}).map(function(i){return esc(pname(i))+': <b>'+b.totals[i]+'</b>';}).join("<br>");
+ if(b.final){NET.winner=b.winner;window.__raceWinner=b.winner;Math.random=NATIVE_RANDOM;var me=b.winner&&b.winner.id===NET.me;
+  scr.innerHTML='<div class="lockd">'+(me?'🏆':'🏴‍☠️')+'</div><div class="big">'+(me?'YOU WIN!':'WINNER')+'</div><div class="code" style="font-size:30px;letter-spacing:1px">'+esc(b.winner?b.winner.name:'—')+'</div><div class="box"><b>Unit '+b.r+'</b><br>'+rows+(RACE.mode==="pts"?'<br><br><b>Final points</b><br>'+stand:'')+'</div><button class="btn" id="so">TITLE</button>';$("so").onclick=title;if(me)PZ.S.win();return;}
+ var nextLocal=b.nextAt-off;scr.innerHTML='<div class="big" style="font-size:32px">UNIT '+b.r+' RESULTS</div><div class="box">'+rows+'</div>'+(RACE.mode==="pts"?'<div class="box"><b>Standings</b> (after '+b.r+'/'+RACE.goal+')<br>'+stand+'</div>':'<div class="box"><b>Still in:</b> '+b.alive.map(function(i){return esc(pname(i));}).join(", ")+'</div>')+
+  (amAlive()?'':'<div class="sub red">You\'re out — spectating.</div>')+'<div class="sub" id="nxt">Next unit soon…</div>'+(NET.host?'<button class="btn s" id="go2">NEXT UNIT NOW ▶</button>':'');
+ if(NET.host)$("go2").onclick=function(){hostRound(b.r+1);};
+ (function t(){var e=$("nxt");if(!e||!RACE)return;var s=Math.max(0,Math.ceil((nextLocal-Date.now())/1000));e.textContent="Next unit in "+s+"s…";if(s>0)setTimeout(t,250);})();}
 var _lastProg="";
-function raceProg(force){if(!RACE||NET.winner&&!force)return;var placed=0,total=0;try{var st=window.__pz&&__pz.state();if(st&&!st.done){total=st.cols*st.rows-1;for(var t=0;t<total;t++)if(st.pos[t]===t)placed++;}else if(st){total=st.cols*st.rows-1;placed=total;}}catch(e){}
- var m={t:"prog",lvl:lvl,placed:placed,total:total,score:score},k=JSON.stringify(m);if(k===_lastProg&&!force)return;_lastProg=k;
- if(NET.host){var p=NET.players[NET.me];if(p){p.lvl=lvl;p.placed=placed;p.total=total;p.score=score;hostSync();}}else{var me=NET.players[NET.me];if(me){me.lvl=lvl;me.placed=placed;me.total=total;}if(NET.conns.host)try{NET.conns.host.send(m);}catch(e){}drawOpp();}}
-function drawOpp(){if(!RACE)return;var o=$("opp");o.innerHTML=plist().map(function(p){var pct=p.done?100:Math.round(100*((p.lvl-1)+(p.total?p.placed/p.total:0))/RACE.goal);
- return '<div class="'+(p.id===NET.me?"me":"")+'">'+esc(p.name)+' · '+(p.done?'🏁':'U'+p.lvl+'/'+RACE.goal+' · '+(p.placed||0)+'/'+(p.total||0))+'<i><b style="width:'+pct+'%"></b></i></div>';}).join("");}
-function raceFinished(){var ms=Date.now()-RACE.startLocal;RACE.myMs=ms;scr.innerHTML='<div class="lockd">🏁</div><div class="big">FINISHED!</div><div class="sub">'+(ms/1000).toFixed(1)+'s · score '+score+'</div><div class="sub">Waiting for result…</div>';
- if(NET.host)hostDone(NET.me,ms,score);else{if(NET.conns.host)try{NET.conns.host.send({t:"done",ms:ms,score:score});}catch(e){}}}
-function showWin(){if(!RACE)return;var w=NET.winner,me=w.id===NET.me;try{__pz&&__pz.stop();}catch(e){}document.querySelectorAll(".evov").forEach(function(e){e.remove();});
- Math.random=NATIVE_RANDOM;
- scr.innerHTML='<div class="lockd">'+(me?'🏆':'🏴‍☠️')+'</div><div class="big">'+(me?'YOU WIN!':'WINNER')+'</div><div class="code" style="font-size:30px;letter-spacing:1px">'+esc(w.name)+'</div><div class="sub">'+(w.ms/1000).toFixed(1)+'s · score '+w.score+'</div><div class="box">'+plist().map(function(p){return esc(p.name)+': '+(p.done?'🏁 '+(p.done/1000).toFixed(1)+'s':'unit '+p.lvl+'/'+RACE.goal);}).join("<br>")+'</div>'+(me?'':'')+'<button class="btn" id="so">'+'TITLE</button>';
- window.__raceWinner=w;$("so").onclick=title;if(me){PZ.S.win();}}
+function raceProg(force){if(!RACE)return;var placed=0,total=0;try{var st=window.__pz&&__pz.state();if(st){total=st.cols*st.rows-1;if(RACE.sent)placed=total;else for(var t=0;t<total;t++)if(st.pos[t]===t)placed++;}}catch(e){}
+ var m={t:"prog",lvl:RACE.round,placed:placed,total:total,score:score},k=JSON.stringify(m);if(k===_lastProg&&!force)return;_lastProg=k;
+ if(NET.host){var p=NET.players[NET.me];if(p){p.lvl=m.lvl;p.placed=placed;p.total=total;p.score=score;hostSync();}}else{var me=NET.players[NET.me];if(me){me.lvl=m.lvl;me.placed=placed;me.total=total;}if(NET.conns.host)try{NET.conns.host.send(m);}catch(e){}drawOpp();}}
+function drawOpp(){if(!RACE)return;$("opp").innerHTML=plist().map(function(p){var out=!RACE.alive[p.id],pct=p.total?Math.round(100*p.placed/p.total):0;
+ return '<div class="'+(p.id===NET.me?"me":"")+'">'+(out?'☠ ':'')+esc(p.name)+' · '+(RACE.mode==="pts"?(RACE.totals[p.id]||0)+'pt · ':'')+(out?'out':'U'+(p.lvl||0)+' '+(p.placed||0)+'/'+(p.total||0))+'<i><b style="width:'+(out?0:pct)+'%"></b></i></div>';}).join("");}
 
 var _rm=(location.search.match(/[?&]room=([A-Z0-9]+)/i)||[])[1];if(_rm)joinMenu(_rm.toUpperCase());else title();
 </script></body></html>
