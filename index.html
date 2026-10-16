@@ -56,6 +56,7 @@ var CONFIG={
  startRevealed:[1,2,3,4,5], // tiles pictured at start per level (L1..); levels beyond use startRevealedDefault
  startRevealedDefault:1,
  stickyRevealLevels:[1,2,3,4], // on these levels a revealed tile keeps its picture after moving out
+ sameBoardOnRetry:true, // retrying a level replays the exact same board (seeded scramble + revealed tiles)
  flipMs:320 // tile flip animation duration
 };
 // =====================================================================================
@@ -68,15 +69,16 @@ function shake(el){el.classList.remove("pzshake");void el.offsetWidth;el.classLi
 function start(o){
  var C=cfg(o.level),cols=C.c,rows=C.r,N=cols*rows,cur=window.__pzOverrideTime||C.t;
  var pos=[],i;for(i=0;i<N;i++)pos.push(i);// pos[tile]=cell; tile N-1 is gap
+ var seed=(o.seed>>>0)||((Math.random()*4294967296)>>>0),rs=seed;function rnd(){rs=(rs+0x6D2B79F5)>>>0;var t=rs;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;}
  var gap=N-1,hint=0,peeks=C.p,done=false,moves=0;
  function cellOf(t){return pos[t];}
  function nb(c){var a=[],x=c%cols,y=(c/cols)|0;if(x>0)a.push(c-1);if(x<cols-1)a.push(c+1);if(y>0)a.push(c-cols);if(y<rows-1)a.push(c+cols);return a;}
  function tileAt(c){return pos.indexOf(c);}
- function scramble(){for(var k=0;k<N;k++)pos[k]=k;var prev=-1;for(var s=0;s<C.m;s++){var gc=pos[gap],n=nb(gc).filter(function(c){return c!==prev;});var c=n[(Math.random()*n.length)|0];var t=tileAt(c);pos[t]=gc;pos[gap]=c;prev=gc;}}
+ function scramble(){for(var k=0;k<N;k++)pos[k]=k;var prev=-1;for(var s=0;s<C.m;s++){var gc=pos[gap],n=nb(gc).filter(function(c){return c!==prev;});var c=n[(rnd()*n.length)|0];var t=tileAt(c);pos[t]=gc;pos[gap]=c;prev=gc;}}
  function nCorrect(){var n=0;for(var k=0;k<N-1;k++)if(pos[k]===k)n++;return n;}
  var tries=0;do{scramble();tries++;}while(nCorrect()===N-1&&tries<200);// random legal moves from solved => always solvable
  // hint tile: one tile whose picture shows from the start
- var cand=[];for(i=0;i<N-1;i++)if(pos[i]!==i)cand.push(i);var nRev=(CONFIG.startRevealed||[])[o.level-1];if(nRev==null)nRev=CONFIG.startRevealedDefault||1;var hints={};for(var hk=0;hk<nRev&&cand.length;hk++){var hj=(Math.random()*cand.length)|0;hints[cand.splice(hj,1)[0]]=true;}hint=-1;
+ var cand=[];for(i=0;i<N-1;i++)if(pos[i]!==i)cand.push(i);var nRev=(CONFIG.startRevealed||[])[o.level-1];if(nRev==null)nRev=CONFIG.startRevealedDefault||1;var hints={};for(var hk=0;hk<nRev&&cand.length;hk++){var hj=(rnd()*cand.length)|0;hints[cand.splice(hj,1)[0]]=true;}hint=-1;
  var hintLive=true;// Mike's rule: picture shows ONLY while tile is in its correct spot; hint tile is revealed at start until first moved
  var maxW=o.maxW||340,maxH=o.maxH||420,tw=Math.floor(Math.min(maxW/cols,maxH/rows)),th=tw,W=tw*cols,H=th*rows;
  var scale=Math.max(W,H)/600,sz=600*scale,ox=(W-sz)/2,oy=(H-sz)/2;
@@ -107,7 +109,7 @@ function start(o){
   if(ok){draw();b.classList.add("peek");S.win();confetti();}else{S.bust();shake(b);shake(document.body);for(var t2=0;t2<N-1;t2++)els[t2].classList.add("cov");}
   setTimeout(function(){o.onEnd({ok:ok,left:left,moves:moves,cfg:C});},ok?1100:900);}
  draw();
- var api={cfg:C,stop:function(){done=true;clearInterval(iv);},state:function(){return {pos:pos.slice(),cols:cols,rows:rows,done:done,moves:moves};},
+ var api={cfg:C,seed:seed,stop:function(){done=true;clearInterval(iv);},state:function(){return {seed:seed,hints:Object.keys(hints).map(Number),pos:pos.slice(),cols:cols,rows:rows,done:done,moves:moves};},
   // test hooks
   solve:function(){for(var t=0;t<N;t++){pos[t]=t;}draw();finish(true);},
   half:function(){var k=0;for(var t=0;t<N-1&&k<(N>>1);t++){if(pos[t]!==t){var o2=tileAt(t);pos[o2]=pos[t];pos[t]=t;k++;}}draw();},
@@ -115,20 +117,22 @@ function start(o){
  window.__pz=api;return api;}
 return {start:start,cfg:cfg,S:S,CONFIG:CONFIG};})();
 
-var $=function(i){return document.getElementById(i);},scr=$("scr"),score=0,lvl=1,best=+(localStorage.getItem("uu_best")||0);
+var $=function(i){return document.getElementById(i);},scr=$("scr"),score=0,lvl=1,best=+(localStorage.getItem("uu_best")||0),bestLvl=+(localStorage.getItem("uu_bestlvl")||0),lvlSeed=0,lvlStartScore=0;
+function newLevel(){lvlSeed=((Math.random()*4294967296)>>>0)||1;lvlStartScore=score;}
+function reach(){if(lvl>bestLvl){bestLvl=lvl;localStorage.setItem("uu_bestlvl",bestLvl);}}
 function hud(){$("hS").textContent="SCORE "+score;var c=PZ.cfg(lvl);$("hL").textContent="L"+lvl+" · "+c.c+"x"+c.r;$("hB").textContent="BEST "+best;}
 $("mute").onclick=function(){window.PZ_MUTED=!window.PZ_MUTED;this.textContent=window.PZ_MUTED?"🔇":"🔊";};
 function title(){score=0;lvl=1;hud();scr.innerHTML='<div class="lockd">🔒</div><h1><small>STORAGE AUCTION</small>SCRAMBLE</h1><div class="sub">Slide the crates. Crack the unit. Beat the clock.</div>'+
 '<div class="box">🧩 Tap a crate next to the gap to slide it.<br>📦 Crates show their picture once they land in the right spot.<br>👁 Hold <b>PEEK</b> to see the target (limited!).<br>⏱ Time runs out = <b class="red">BUST</b>.</div>'+
-'<div class="thumbs">'+UNIT_IMGS.map(function(s){return '<img src="'+s+'">';}).join("")+'</div><button class="btn" id="go">PLAY ▶</button>';$("go").onclick=play;}
-function play(){hud();var host=document.createElement("div");host.style.width="100%";scr.innerHTML="";scr.appendChild(host);
+'<div class="thumbs">'+UNIT_IMGS.map(function(s){return '<img src="'+s+'">';}).join("")+'</div><button class="btn" id="go">PLAY ▶</button>';$("go").onclick=function(){newLevel();play();};}
+function play(){reach();hud();var host=document.createElement("div");host.style.width="100%";scr.innerHTML="";scr.appendChild(host);
  var r=scr.getBoundingClientRect();
- PZ.start({host:host,img:UNIT_IMGS[(lvl-1)%UNIT_IMGS.length],level:lvl,label:"UNIT "+lvl,maxW:r.width-34,maxH:r.height-130,onEnd:function(res){
+ PZ.start({seed:PZ.CONFIG.sameBoardOnRetry?lvlSeed:0,host:host,img:UNIT_IMGS[(lvl-1)%UNIT_IMGS.length],level:lvl,label:"UNIT "+lvl,maxW:r.width-34,maxH:r.height-130,onEnd:function(res){
   if(res.ok){var pts=lvl*100+res.left*10;score+=pts;if(score>best){best=score;localStorage.setItem("uu_best",best);}hud();
    var nx=PZ.cfg(lvl+1);scr.innerHTML='<div class="lockd">🔓</div><div class="big">UNLOCKED!</div><div class="box">Level bonus: +'+lvl*100+'<br>Time bonus: +'+res.left*10+' ('+res.left+'s left)<br>Moves: '+res.moves+'</div><div class="sub">Next: '+nx.c+'×'+nx.r+' grid · '+nx.t+'s · '+nx.p+' peek'+(nx.p===1?"":"s")+'</div><button class="btn" id="nx">NEXT UNIT ▶</button>';
-   $("nx").onclick=function(){lvl++;play();};}
+   $("nx").onclick=function(){lvl++;newLevel();play();};}
   else over();}});}
-function over(){var nb=score>0&&score>=best;scr.innerHTML='<div class="lockd">💥</div><div class="big red">BUSTED!</div><div class="sub">Time ran out on unit '+lvl+'.</div><div class="box" style="text-align:center;font-size:22px">Score <b>'+score+'</b><br>Best <b>'+best+'</b>'+(nb?'<br>🏆 NEW BEST!':'')+'</div><button class="btn" id="re">RETRY ↻</button><button class="btn" id="ti" style="background:#666;color:#eee;box-shadow:0 6px 0 #333;font-size:18px;padding:12px">TITLE</button>';
- $("re").onclick=function(){score=0;lvl=1;play();};$("ti").onclick=title;}
+function over(){var nb=score>0&&score>=best;scr.innerHTML='<div class="lockd">💥</div><div class="big red">BUSTED!</div><div class="sub">Time ran out on unit '+lvl+'.</div><div class="box" style="text-align:center;font-size:22px">Score <b>'+score+'</b><br>Best <b>'+best+'</b><br>Best level reached <b>'+bestLvl+'</b>'+(nb?'<br>🏆 NEW BEST!':'')+'</div><button class="btn" id="re">RETRY LEVEL '+lvl+' ↻</button><button class="btn" id="so" style="background:#666;color:#eee;box-shadow:0 6px 0 #333;font-size:16px;padding:10px">START OVER</button>';
+ $("re").onclick=function(){score=lvlStartScore;if(!PZ.CONFIG.sameBoardOnRetry)newLevel();play();};$("so").onclick=title;}
 title();
 </script></body></html>
