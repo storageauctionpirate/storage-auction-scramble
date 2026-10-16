@@ -53,8 +53,6 @@ var CONFIG={
  g4:{c:4,r:4,levels:6,time:[180,174,168,162,156,150],moves:[20,32,48,66,90,130],peeks:[2,2,1,1,1,0]},
  // 4x8: levels 13+ (endless): time = max(floor, start - step*i), moves = min(cap, start + step*i)
  g8:{c:4,r:8,timeStart:360,timeStep:4,timeFloor:240,movesStart:40,movesStep:15,movesCap:400,peeksFirst:1,peeksFirstLevels:3},
- startRevealed:[5,4,3,2,1], // tiles pictured at start per level (L1..); levels beyond use startRevealedDefault
- startRevealedDefault:1,
  stickyRevealLevels:[1,2,3,4], // on these levels a revealed tile keeps its picture after moving out
  flipMs:320 // tile flip animation duration
 };
@@ -76,7 +74,7 @@ function start(o){
  function nCorrect(){var n=0;for(var k=0;k<N-1;k++)if(pos[k]===k)n++;return n;}
  var tries=0;do{scramble();tries++;}while(nCorrect()===N-1&&tries<200);// random legal moves from solved => always solvable
  // hint tile: one tile whose picture shows from the start
- var cand=[];for(i=0;i<N-1;i++)if(pos[i]!==i)cand.push(i);var nRev=(CONFIG.startRevealed||[])[o.level-1];if(nRev==null)nRev=CONFIG.startRevealedDefault||1;var hints={};for(var hk=0;hk<nRev&&cand.length;hk++){var hj=(Math.random()*cand.length)|0;hints[cand.splice(hj,1)[0]]=true;}hint=-1;
+ var cand=[];for(i=0;i<N-1;i++)if(pos[i]!==i)cand.push(i);hint=cand[(Math.random()*cand.length)|0];if(hint===undefined)hint=0;
  var hintLive=true;// Mike's rule: picture shows ONLY while tile is in its correct spot; hint tile is revealed at start until first moved
  var maxW=o.maxW||340,maxH=o.maxH||420,tw=Math.floor(Math.min(maxW/cols,maxH/rows)),th=tw,W=tw*cols,H=th*rows;
  var scale=Math.max(W,H)/600,sz=600*scale,ox=(W-sz)/2,oy=(H-sz)/2;
@@ -87,10 +85,10 @@ function start(o){
  for(i=0;i<N-1;i++){var e=document.createElement("div");e.className="pzc";e.dataset.t=i;e.style.width=(tw-2)+"px";e.style.height=(th-2)+"px";
   e.style.backgroundImage="url("+o.img+")";e.style.backgroundSize=sz+"px "+sz+"px";
   e.style.backgroundPosition=(ox-(i%cols)*tw-1)+"px "+(oy-((i/cols)|0)*th-1)+"px";e.innerHTML="<span>"+(i+1)+"</span>";e.style.fontSize=Math.round(tw*.32)+"px";b.appendChild(e);els.push(e);}
- var sticky=(CONFIG.stickyRevealLevels||[]).indexOf(o.level)>=0,rev=[];function shown(t){var s=hints[t]||pos[t]===t||(sticky&&rev[t]);if(s&&sticky)rev[t]=true;return s;}var prevS=[];
+ var sticky=(CONFIG.stickyRevealLevels||[]).indexOf(o.level)>=0,rev=[];function shown(t){var s=(t===hint&&hintLive)||pos[t]===t||(sticky&&rev[t]);if(s&&sticky)rev[t]=true;return s;}var prevS=[];
  function draw(){for(var t=0;t<N-1;t++){var e=els[t],c=pos[t];e.style.left=((c%cols)*tw+1)+"px";e.style.top=(((c/cols)|0)*th+1)+"px";var s=shown(t);if(prevS[t]!==undefined&&prevS[t]!==s){e.classList.remove("flip");void e.offsetWidth;e.style.setProperty("--flip",CONFIG.flipMs+"ms");e.classList.add("flip");}prevS[t]=s;e.classList.toggle("cov",!s);e.classList.toggle("ok",pos[t]===t&&s);e.querySelector("span").style.display=s?"none":"";}
   h.querySelector("#pzm").textContent=moves+" moves";}
- function tryMove(t){if(done)return;var c=pos[t],gc=pos[gap];if(nb(gc).indexOf(c)<0){S.bump();return;}pos[t]=gc;pos[gap]=c;if(hints[t])delete hints[t];moves++;S.slide();
+ function tryMove(t){if(done)return;var c=pos[t],gc=pos[gap];if(nb(gc).indexOf(c)<0){S.bump();return;}pos[t]=gc;pos[gap]=c;if(t===hint)hintLive=false;moves++;S.slide();
   if(pos[t]===t){S.lock();els[t].classList.remove("pop");void els[t].offsetWidth;els[t].classList.add("pop");}draw();if(nCorrect()===N-1)finish(true);}
  b.addEventListener("pointerdown",function(ev){var e=ev.target.closest(".pzc");if(e){ev.preventDefault();tryMove(+e.dataset.t);}});
  var pk=h.querySelector("#pzpk");if(!peeks){pk.disabled=true;pk.textContent="👁 NO PEEKS";}
