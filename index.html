@@ -53,7 +53,7 @@ var CONFIG={
  g4:{c:4,r:4,levels:6,time:[180,174,168,162,156,150],moves:[20,32,48,66,90,130],peeks:[2,2,1,1,1,0]},
  // 4x8: levels 13+ (endless): time = max(floor, start - step*i), moves = min(cap, start + step*i)
  g8:{c:4,r:8,timeStart:360,timeStep:4,timeFloor:240,movesStart:40,movesStep:15,movesCap:400,peeksFirst:1,peeksFirstLevels:3},
- stickyRevealLevels:[1], // on these levels a revealed tile keeps its picture after moving out
+ stickyRevealLevels:[1,2], // on these levels a revealed tile keeps its picture after moving out
  flipMs:320 // tile flip animation duration
 };
 // =====================================================================================
