@@ -98,7 +98,7 @@ bust:function(){snd(300,.6,"sawtooth",.12,50);},bump:function(){snd(90,.05,"sine
 // ===================== CONFIG: all difficulty tuning lives here =====================
 var CONFIG={
  // 3x3: levels 1-6. time[i]=seconds, moves[i]=scramble depth, peeks[i]
- g3:{c:3,r:3,levels:6,time:[70,67,64,61,58,45],moves:[7,10,13,18,24,60],peeks:[3,3,2,2,1,1]},
+ g3:{c:3,r:3,levels:6,time:[90,80,72,65,58,45],moves:[5,8,11,16,24,60],peeks:[3,3,2,2,1,1]},
  // 4x4: levels 7-12
  g4:{c:4,r:4,levels:6,time:[180,174,168,162,156,150],moves:[20,32,48,66,90,130],peeks:[2,2,1,1,1,0]},
  // 4x8: levels 13+ (endless): time = max(floor, start - step*i), moves = min(cap, start + step*i)
@@ -108,10 +108,10 @@ var CONFIG={
  stickyRevealLevels:[1,2,3,4,5], // on these levels a revealed tile keeps its picture after moving out
  sameBoardOnRetry:true, // retrying a level replays the exact same board (seeded scramble + revealed tiles)
  flipMs:320, // tile flip animation duration
- // Random events (only when the host passes onEvent). Never on level 1, at most one per level.
+ // Random events (only when the host passes onEvent). Gated by eventMinLevel (L4+, past L1–L3), at most one per level.
  soldChancePerLevel:0.06,       // Auctioneer bursts in: "SOLD!" = instant win, advance a level
  tenantPaidChancePerLevel:0.05, // Debbie Deals: "Tenant Paid!" = back one level (min 1)
- eventMinLevel:2,
+ eventMinLevel:4,
  eventWindow:[0.2,0.7],         // fires between 20% and 70% of the level timer
  eventDebugDelayMs:3000,        // ?event=sold|tenant|rat|roach forces it ~3s in
  // Randy's Pick bonus game: rolled per level, shown after clearing it. Never in a SOLD!/Tenant Paid! level.
@@ -121,9 +121,9 @@ var CONFIG={
  bonusExtraSeconds:15,          // time prize: +15s on the next level
  bonusFreePieces:2,             // free-piece prize: next level starts with 2 extra pieces revealed
  bonusPrizeWeights:{cash:0.5,time:0.25,piece:0.25},
- // Hazards: rat / cockroach runs across the board and un-sticks correct revealed pieces
+ // Hazards: rat / cockroach runs across the board and un-sticks correct revealed pieces. Gated by hazardMinLevel (L5+).
  hazardChancePerLevel:0.10,
- hazardMinLevel:3,
+ hazardMinLevel:5,
  hazardFlipCount:[2,3],         // currently-correct revealed pieces flipped back to crates
  hazardWindow:[0.2,0.7],        // fires between 20% and 70% of the level timer
  hazardRunMs:1100               // sprite run duration
