@@ -1,0 +1,7 @@
+*.jks
+keystore.properties
+KEYSTORE-SECRET.txt
+IDEAS-ADMIN-TOKEN.txt
+.env
+*.pem
+*.p12
